@@ -5,6 +5,8 @@ import styled from "styled-components";
 import WelcomeBlock from "./components/WelcomeBlock";
 import GridBenefits from "./components/GridBenefits";
 
+import { dataShortCards, dataLongCards } from "@/app/lib/data";
+
 const StyledWrapper = styled.section`
   display: block;
   width: 100%;
@@ -17,8 +19,9 @@ const StyledWrapper = styled.section`
 const Benefits = () => {
   return (
     <StyledWrapper>
-      <GridBenefits />
+      <GridBenefits cols={8} items={dataShortCards} />
       <WelcomeBlock />
+      <GridBenefits cols={10} rows={4} items={dataLongCards} size="lg" />
     </StyledWrapper>
   );
 };

@@ -1,6 +1,6 @@
 export type DataObject = {
     id: number,
-    type: 'image' | 'longImg' | 'default';
+    type: 'image' | 'longImg' | 'centerImg' | 'rightImage' | 'default';
     title?: string,
     croppedPosition?: "topLeft" | "topRight" | "bottomLeft" | "bottomRight";
     description?: string,
@@ -11,7 +11,7 @@ export type DataObject = {
         alt: string;
     };
     cell: {
-        row: number,
+        row?: number,
         col: number,
     }
 };
@@ -21,7 +21,7 @@ export type TitleDataObject = {
     description?: string,
 };
 
-export const data: DataObject[] = [
+export const dataShortCards: DataObject[] = [
     {
         id: 1,
         type: 'image',
@@ -29,7 +29,6 @@ export const data: DataObject[] = [
         croppedPosition: 'topLeft',
         visibleLg: true,
         cell: {
-            row: 2,
             col: 2
         }
     },
@@ -40,7 +39,6 @@ export const data: DataObject[] = [
         description: 'Естонсько-український іншуртех-стартап',
         bgColor: '#C6F3F8',
         cell: {
-            row: 1,
             col: 2
         }
     },
@@ -50,7 +48,7 @@ export const data: DataObject[] = [
         image: { src: "open-space.webp", alt: "smiling man" },
         visibleLg: true,
         cell: {
-            row: 2,
+
             col: 4
         }
     },
@@ -61,7 +59,7 @@ export const data: DataObject[] = [
         description: 'людей у команді',
         bgColor: '#C0F3CA',
         cell: {
-            row: 1,
+
             col: 2
         }
     },
@@ -71,7 +69,6 @@ export const data: DataObject[] = [
         visibleLg: true,
         bgColor: 'transparent',
         cell: {
-            row: 1,
             col: 4
         }
     },
@@ -83,10 +80,74 @@ export const data: DataObject[] = [
         description: 'сапорт на звʼязку',
         bgColor: '#FFFFAF',
         cell: {
-            row: 1,
             col: 2
         }
     },
+]
+
+export const dataLongCards: DataObject[] = [
+    {
+        id: 1,
+        type: 'rightImage',
+        title: '100+',
+        description: 'компаній обрали нас',
+        bgColor: '#E0D3FF',
+        image: {
+            src: 'about-4.webp',
+            alt: 'men-with-beard'
+        },
+        cell: {
+            col: 3
+        }
+    },
+    {
+        id: 2,
+        type: 'default',
+        title: '97%',
+        description: 'клієнтів продовжують співпрацю з нами',
+        bgColor: '#FFFFAF',
+        cell: {
+            col: 4
+        }
+    },
+    {
+        id: 3,
+        type: 'centerImg',
+        title: '30 000+',
+        description: 'хлопців та дівчат яких ми заеншурили',
+        bgColor: '#C6F3F8',
+        croppedPosition: 'topLeft',
+        image: {
+            src: 'about-chart.webp',
+            alt: 'chart'
+        },
+        cell: {
+            col: 3,
+            row: 4,
+        }
+    },
+    {
+        id: 4,
+        type: 'default',
+        title: '10 000+',
+        description: 'разів прикрили своїх клієнтів',
+        croppedPosition: 'topLeft',
+        bgColor: '#C0F3CA',
+        cell: {
+            col: 4,
+        }
+    },
+    {
+        id: 5,
+        type: 'default',
+        title: '2хв',
+        description: 'найшвидша компенсація',
+        bgColor: '#E0D3FF',
+        cell: {
+            col: 3,
+        }
+    },
+
 ]
 
 export const titleData: TitleDataObject = {

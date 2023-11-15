@@ -1,3 +1,5 @@
+import { createGlobalStyle } from "styled-components";
+
 export const theme = {
     colors: {
         gray: '#7F7D84'
@@ -8,3 +10,9 @@ export const theme = {
         laptopUp: "(min-width:991px)",
     },
 };
+
+export const Global = createGlobalStyle`
+  * {
+    color:#2C2A2D;
+  }
+`;
