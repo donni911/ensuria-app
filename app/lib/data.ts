@@ -16,10 +16,17 @@ export type DataObject = {
     }
 };
 
-export type TitleDataObject = {
+export type TitleDataType = {
     title?: string,
     description?: string,
 };
+
+export type CompensationDataType = {
+    icon: [{
+        src: string,
+        alt: string
+    }]
+}
 
 export const dataShortCards: DataObject[] = [
     {
@@ -150,7 +157,13 @@ export const dataLongCards: DataObject[] = [
 
 ]
 
-export const titleData: TitleDataObject = {
+export const titleData: TitleDataType = {
     title: 'Привіт, я Ensuria',
     description: 'Цілковито диджитальний асистент зі страхування життя та здоровʼя. Допомагаю жити на повну, перетворюючи страхування у зручний сервіс.'
 }
+
+// export const compensationData: CompensationDataType = {
+// images:[{
+//     src:s
+// }]
+// }
