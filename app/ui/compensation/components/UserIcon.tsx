@@ -119,7 +119,7 @@ const StyledIconSvgWrapperText = styled.span`
 
 const UserIcon = (props: { data: IconType }) => {
   const el = useRef(null);
-  const isInView = useInView(el, { once: true, margin: "-20%" });
+  const isInView = useInView(el, { once: true, margin: "-15%" });
 
   return (
     <StyledIcon

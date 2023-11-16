@@ -96,7 +96,7 @@ const CardImage = (props: { card: DataObjectType }) => {
       width={0}
       height={0}
       sizes="100vw"
-      style={{ width: "100%", height: "auto" }}
+      style={{ width: "100%", height: "100%" }}
       src={`/images/${props.card.image?.src}`}
       alt={`${props.card.image?.alt}`}
     ></Image>

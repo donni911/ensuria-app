@@ -78,7 +78,7 @@ const GridBenefits = (props: {
   };
 
   const bodyAnimation = useRef(null);
-  const isInView = useInView(bodyAnimation, { once: true });
+  const isInView = useInView(bodyAnimation, { once: true, margin: "-20%" });
 
   return (
     <StyledGrid ref={bodyAnimation} $cols={props.cols} $rows={props.rows}>
