@@ -2,6 +2,8 @@
 import { styled } from "styled-components";
 import { StyledLinkBtn, StyledWrapper } from "@/app/styles/app";
 import Image from "next/image";
+import { IconType, icons } from "@/app/lib/data";
+import UserIcon from "./components/UserIcon";
 
 const StyledCompensationSection = styled.section`
   padding-top: 13.056vw;
@@ -160,6 +162,8 @@ const Compensation = () => (
         </StyledCompensationContent>
       </StyledCompensationBlock>
     </StyledWrapper>
+    {icons &&
+      icons.map((icon: IconType) => <UserIcon key={icon.id} data={icon} />)}
   </StyledCompensationSection>
 );
 

@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 import Image from "next/image";
-import { DataObject } from "@/app/lib/data";
+import { DataObjectType } from "@/app/lib/data";
 
 type StyledBaseCardType = {
   $bg?: string;
@@ -75,9 +75,7 @@ const StyledBaseCardDescription = styled.p`
   }
 `;
 
-const BaseCard = (props: { card: DataObject; size: string }) => {
-  console.log(props.size);
-
+const BaseCard = (props: { card: DataObjectType; size: string }) => {
   return (
     <StyledBaseCard $bg={props.card.bgColor}>
       {props.card.croppedPosition && (
@@ -105,7 +103,7 @@ const BaseCard = (props: { card: DataObject; size: string }) => {
   );
 };
 
-const CardImage = (props: { card: DataObject }) => {
+const CardImage = (props: { card: DataObjectType }) => {
   return (
     <Image
       width={0}
@@ -118,7 +116,7 @@ const CardImage = (props: { card: DataObject }) => {
   );
 };
 
-const CardSimple = (props: { card: DataObject; size: string }) => {
+const CardSimple = (props: { card: DataObjectType; size: string }) => {
   return (
     <StyledBaseCardWrapper $size={props.size}>
       {props.card.title && (
@@ -157,7 +155,7 @@ const StyledCardRightImage = styled.div`
   }
 `;
 
-const CardRightImage = (props: { card: DataObject; size: string }) => {
+const CardRightImage = (props: { card: DataObjectType; size: string }) => {
   return (
     <StyledBaseCardWrapper $size={props.size}>
       <div className="h-full w-6/12 flex flex-col justify-between">
@@ -213,7 +211,7 @@ const StyledCardCenterImage = styled.div`
   }
 `;
 
-const CardCenterImage = (props: { card: DataObject; size: string }) => {
+const CardCenterImage = (props: { card: DataObjectType; size: string }) => {
   return (
     <StyledBaseCardWrapper $size={props.size}>
       <div className="h-full flex flex-col justify-between">

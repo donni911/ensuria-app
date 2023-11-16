@@ -2,7 +2,7 @@ import styled from "styled-components";
 import BaseCard from "./BaseCard";
 
 import { gridCellColSize } from "@/app/lib/utils";
-import { DataObject } from "@/app/lib/data";
+import { DataObjectType } from "@/app/lib/data";
 
 type StyledGridItemProps = {
   $bg?: string;
@@ -10,7 +10,8 @@ type StyledGridItemProps = {
   $gridrow?: string;
   $display?: boolean;
   $lg?: string;
-  $bigCell?: string;
+  $bigCell?: boolean;
+  $size?: string;
 };
 
 type StyledGridProps = {
@@ -56,19 +57,20 @@ const StyledGridItem = styled.div<StyledGridItemProps>`
     `
   overflow: hidden;
   min-height: 500px;
+
 `}
 `;
 
 const GridBenefits = (props: {
   cols: number;
   rows?: number;
-  items: DataObject[];
+  items: DataObjectType[];
   size?: "lg";
 }) => {
   return (
     <StyledGrid $cols={props.cols} $rows={props.rows}>
       {props.items.length &&
-        props.items.map((item: DataObject) => (
+        props.items.map((item: DataObjectType) => (
           <StyledGridItem
             key={item.id}
             $display={item.visibleLg}
