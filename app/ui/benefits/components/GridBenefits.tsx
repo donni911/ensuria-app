@@ -4,6 +4,10 @@ import BaseCard from "./BaseCard";
 import { gridCellColSize } from "@/app/lib/utils";
 import { DataObjectType } from "@/app/lib/data";
 
+// MENTOR QUESTION
+// Чи нормально типізувати styled? Що робити якщо цих стилів з типами буде багато?
+// І можливо краще виносити стилі в окремий файл?
+
 type StyledGridItemProps = {
   $bg?: string;
   $gridcolumn?: string;
@@ -34,7 +38,7 @@ const StyledGrid = styled.div<StyledGridProps>`
   }
 `;
 
-// MENTOR CHECK
+// MENTOR QUESTION
 const StyledGridItem = styled.div<StyledGridItemProps>`
   min-height: 12.014vw;
   background: ${(props) => props.$bg || ""};
@@ -65,7 +69,7 @@ const GridBenefits = (props: {
   cols: number;
   rows?: number;
   items: DataObjectType[];
-  size?: "lg";
+  size: "lg" | "sm";
 }) => {
   return (
     <StyledGrid $cols={props.cols} $rows={props.rows}>

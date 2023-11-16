@@ -2,23 +2,14 @@ import { styled } from "styled-components";
 import Image from "next/image";
 import { DataObjectType } from "@/app/lib/data";
 
-type StyledBaseCardType = {
-  $bg?: string;
-  $size?: string;
-};
-
-const StyledBaseCard = styled.div<StyledBaseCardType>`
+const StyledBaseCard = styled.div<{ $bg?: string; $size?: string }>`
   border-radius: min(6px, 0.5vw);
   background: ${(props) => props.$bg || ""};
   height: 100%;
   position: relative;
 `;
 
-type StyledBaseCardCornerType = {
-  position: string;
-};
-
-const StyledBaseCardCorner = styled.div<StyledBaseCardCornerType>`
+const StyledBaseCardCorner = styled.div<{ position: string }>`
   position: absolute;
   ${(props) => {
     switch (props.position) {
@@ -36,11 +27,7 @@ const StyledBaseCardCorner = styled.div<StyledBaseCardCornerType>`
   }}
 `;
 
-type StyledBaseCardWrapperType = {
-  $size: string;
-};
-
-const StyledBaseCardWrapper = styled.div<StyledBaseCardWrapperType>`
+const StyledBaseCardWrapper = styled.div<{ $size?: string }>`
   height: 100%;
   display: flex;
   flex-direction: column;

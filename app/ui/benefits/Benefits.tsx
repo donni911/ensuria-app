@@ -10,7 +10,7 @@ import { StyledWrapper } from "@/app/styles/app";
 const Benefits = () => {
   return (
     <StyledWrapper>
-      <GridBenefits cols={8} items={dataShortCards} />
+      <GridBenefits cols={8} items={dataShortCards} size="sm" />
       <WelcomeBlock />
       <GridBenefits cols={10} rows={4} items={dataLongCards} size="lg" />
     </StyledWrapper>

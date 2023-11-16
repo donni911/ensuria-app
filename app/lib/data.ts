@@ -1,7 +1,7 @@
 
 type ImageType = {
-    src?: string;
-    alt?: string;
+    src: string;
+    alt: string;
 }
 
 export type DataObjectType = {

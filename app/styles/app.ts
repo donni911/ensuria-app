@@ -13,7 +13,6 @@ export const StyledLinkBtn = styled.a`
     height: 3.958vw;
     min-width: 10.764vw;
     padding: 5px 10px;
-    font-family: "TT Hoves", sans-serif;
     font-size: 1.111vw;
     font-weight: 500;
     text-align: center;
