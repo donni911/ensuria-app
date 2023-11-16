@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import BaseCard from "./BaseCard";
-
-import { gridCellColSize } from "@/app/lib/utils";
+import { useInView, motion } from "framer-motion";
 import { DataObjectType } from "@/app/lib/data";
+import { useRef } from "react";
+import { cardUpAnimation } from "@/app/styles/animations";
 
 // MENTOR QUESTION
 // Чи нормально типізувати styled? Що робити якщо цих стилів з типами буде багато?
@@ -39,7 +40,7 @@ const StyledGrid = styled.div<StyledGridProps>`
 `;
 
 // MENTOR QUESTION
-const StyledGridItem = styled.div<StyledGridItemProps>`
+const StyledGridItem = styled(motion.div)<StyledGridItemProps>`
   min-height: 12.014vw;
   background: ${(props) => props.$bg || ""};
   grid-column: ${(props) => props.$gridcolumn || "span 2 / span 2"};
@@ -47,7 +48,7 @@ const StyledGridItem = styled.div<StyledGridItemProps>`
 
   @media ${(props) => props.theme.media.laptop} {
     height: 175px;
-    display: ${(props) => (props.$display ? "none" : "block")};
+    display: ${(props) => (props.$display ? "none !important" : "block")};
   }
 
   ${(props) =>
@@ -71,17 +72,29 @@ const GridBenefits = (props: {
   items: DataObjectType[];
   size: "lg" | "sm";
 }) => {
+  const gridCellSize = (num: number | string | undefined) => {
+    if (num) return `span ${num} / span ${num}`;
+    else return "";
+  };
+
+  const bodyAnimation = useRef(null);
+  const isInView = useInView(bodyAnimation, { once: true });
+
   return (
-    <StyledGrid $cols={props.cols} $rows={props.rows}>
+    <StyledGrid ref={bodyAnimation} $cols={props.cols} $rows={props.rows}>
       {props.items.length &&
         props.items.map((item: DataObjectType) => (
           <StyledGridItem
             key={item.id}
             $display={item.visibleLg}
-            $gridcolumn={gridCellColSize(item.cell.col)}
-            $gridrow={gridCellColSize(item.cell.row)}
+            $gridcolumn={gridCellSize(item.cell.col)}
+            $gridrow={gridCellSize(item.cell.row)}
             $size={props.size}
             $bigCell={item.type === "centerImg"}
+            custom={item.id}
+            variants={cardUpAnimation()}
+            initial="initial"
+            animate={isInView ? "enter" : ""}
           >
             <BaseCard card={item} size={props.size}></BaseCard>
           </StyledGridItem>

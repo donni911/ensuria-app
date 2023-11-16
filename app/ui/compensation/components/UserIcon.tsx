@@ -5,9 +5,13 @@
 import { IconType } from "@/app/lib/data";
 import { styled } from "styled-components";
 import Image from "next/image";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+import { fadeAnimation } from "@/app/styles/animations";
 
-const StyledIcon = styled.div<{ $type: string }>`
+const StyledIcon = styled(motion.div)<{ $type: string }>`
   position: absolute;
+  opacity: 0;
   ${(props) =>
     props.$type === "bigLeft" &&
     `
@@ -114,8 +118,17 @@ const StyledIconSvgWrapperText = styled.span`
 `;
 
 const UserIcon = (props: { data: IconType }) => {
+  const el = useRef(null);
+  const isInView = useInView(el, { once: true, margin: "-20%" });
+
   return (
-    <StyledIcon $type={props.data.type}>
+    <StyledIcon
+      ref={el}
+      $type={props.data.type}
+      variants={fadeAnimation()}
+      initial="initial"
+      animate={isInView ? "enter" : ""}
+    >
       <StyledIconSvgWrapper $type={props.data.type} $fill={props.data.color}>
         <StyledIconSvgWrapperText>{props.data.sum}</StyledIconSvgWrapperText>
         <svg
@@ -124,13 +137,13 @@ const UserIcon = (props: { data: IconType }) => {
           id="compensation-bg"
         >
           <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
+            fillRule="evenodd"
+            clipRule="evenodd"
             d="M18 4a4 4 0 014-4h197a4 4 0 014 4v57a4 4 0 01-4 4H45.13a4 4 0 01-2.829-1.172l-23.13-23.13A4 4 0 0118 37.87V4z"
           />
           <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
+            fillRule="evenodd"
+            clipRule="evenodd"
             d="M33.533 45.467a.274.274 0 11.387-.387.274.274 0 01-.387.387zm-7.085 26.705c2.52 2.52.736 6.828-2.828 6.828H4a4 4 0 01-4-4V55.38c0-3.564 4.309-5.348 6.828-2.829l19.62 19.62z"
           />
         </svg>

@@ -1,6 +1,19 @@
+import {
+  animate,
+  motion,
+  useInView,
+  useMotionValue,
+  useTransform,
+} from "framer-motion";
 import styled from "styled-components";
 import { titleData } from "@/app/lib/data";
 import Image from "next/image";
+import { useRef } from "react";
+import {
+  fadeAnimation,
+  fadeInAnimation,
+  fadeUpAnimation,
+} from "@/app/styles/animations";
 
 const Wrapper = styled.div`
   max-width: 53.397vw;
@@ -19,11 +32,12 @@ const Wrapper = styled.div`
   }
 `;
 
-const WelcomeLogo = styled.div`
+const WelcomeLogo = styled(motion.div)`
   width: 7.986vw;
   height: 7.986vw;
   position: relative;
   margin-bottom: 2.222vw;
+  opacity: 0.5;
 
   @media ${(props) => props.theme.media.laptop} {
     width: 68px;
@@ -32,7 +46,8 @@ const WelcomeLogo = styled.div`
   }
 `;
 
-const WelcomeTitle = styled.h2`
+const WelcomeTitle = styled(motion.h2)`
+  overflow: hidden;
   font-size: 6.667vw;
   line-height: 1.1;
   font-weight: 500;
@@ -45,11 +60,12 @@ const WelcomeTitle = styled.h2`
   }
 `;
 
-const WelcomeDescription = styled.p`
+const WelcomeDescription = styled(motion.p)`
   font-size: 1.667vw;
   line-height: 1.3;
   margin-bottom: 3.75vw;
   text-align: center;
+
   color: ${(props) => props.theme.colors.gray};
 
   @media ${(props) => props.theme.media.laptop} {
@@ -60,9 +76,16 @@ const WelcomeDescription = styled.p`
 `;
 
 const WelcomeBlock = () => {
+  const wrapper = useRef(null);
+  const isInView = useInView(wrapper, { once: true });
+
   return (
-    <Wrapper>
-      <WelcomeLogo>
+    <Wrapper ref={wrapper}>
+      <WelcomeLogo
+        variants={fadeInAnimation(0.75)}
+        initial="initial"
+        animate={isInView ? "enter" : ""}
+      >
         <Image
           width={0}
           height={0}
@@ -72,8 +95,15 @@ const WelcomeBlock = () => {
           alt="logo"
         ></Image>
       </WelcomeLogo>
-      <WelcomeTitle>{titleData.title}</WelcomeTitle>
-      <WelcomeDescription>{titleData.description}</WelcomeDescription>
+      <motion.div
+        className="opacity-0"
+        variants={fadeAnimation(1.4)}
+        initial="initial"
+        animate={isInView ? "enter" : ""}
+      >
+        <WelcomeTitle>{titleData.title}</WelcomeTitle>
+        <WelcomeDescription>{titleData.description}</WelcomeDescription>
+      </motion.div>
     </Wrapper>
   );
 };

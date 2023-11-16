@@ -13,6 +13,6 @@ export const theme = {
 
 export const Global = createGlobalStyle`
   * {
-    color:#2C2A2D;
+    color: #2C2A2D;
   }
 `;

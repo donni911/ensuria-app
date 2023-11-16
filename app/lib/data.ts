@@ -13,6 +13,7 @@ export type DataObjectType = {
     visibleLg?: boolean,
     bgColor?: string,
     image?: ImageType,
+    display?: string,
     cell: {
         row?: number,
         col: number,

@@ -1,9 +1,11 @@
 "use client";
 import { styled } from "styled-components";
-import { StyledLinkBtn, StyledWrapper } from "@/app/styles/app";
+import { StyledWrapper } from "@/app/styles/app";
 import Image from "next/image";
 import { IconType, icons } from "@/app/lib/data";
 import UserIcon from "./components/UserIcon";
+
+import ButtonList from "../app/ButtonList";
 
 const StyledCompensationSection = styled.section`
   padding-top: 13.056vw;
@@ -104,67 +106,43 @@ const StyledCompensationContent = styled.div`
   }
 `;
 
-const StyledBtnGroup = styled.div`
-  gap: max(0.278vw, 8px);
-  display: flex;
-  justify-content: center;
-  max-width: 330px;
-`;
-
-const Compensation = () => (
-  <StyledCompensationSection>
-    <StyledWrapper>
-      <StyledCompensationBlock>
-        <StyledCompensationContent>
-          <StyledCompensationSubTitleWrapper>
-            <StyledCompensationImageWrap>
-              <Image
-                width={0}
-                height={0}
-                sizes="100vw"
-                style={{ width: "100%", height: "auto" }}
-                src="/images/ensuria-logo.webp"
-                alt="logo"
-              ></Image>
-            </StyledCompensationImageWrap>
-            <StyledCompensationSubTitle>
-              Лише у застосунку Ensuria
-            </StyledCompensationSubTitle>
-          </StyledCompensationSubTitleWrapper>
-          <StyledCompensationTitle>
-            Компенсація на раз-два
-          </StyledCompensationTitle>
-          <StyledCompensationDescription>
-            Якщо подати заявку на страхове відшкодування в Ensuria й замовити
-            доставлення піци одночасно, то гроші прийдуть на твій рахунок
-            раніше, ніж курʼєр.
-          </StyledCompensationDescription>
-          <StyledBtnGroup>
-            <StyledLinkBtn href="/">
-              <Image
-                width={0}
-                height={0}
-                sizes="100vw"
-                src="/svg/apple-download.svg"
-                alt="logo"
-              ></Image>
-            </StyledLinkBtn>
-            <StyledLinkBtn href="/">
-              <Image
-                width={0}
-                height={0}
-                sizes="100vw"
-                src="/images/google-play.webp"
-                alt="logo"
-              ></Image>
-            </StyledLinkBtn>
-          </StyledBtnGroup>
-        </StyledCompensationContent>
-      </StyledCompensationBlock>
-    </StyledWrapper>
-    {icons &&
-      icons.map((icon: IconType) => <UserIcon key={icon.id} data={icon} />)}
-  </StyledCompensationSection>
-);
+const Compensation = () => {
+  return (
+    <StyledCompensationSection>
+      <StyledWrapper>
+        <StyledCompensationBlock>
+          <StyledCompensationContent>
+            <StyledCompensationSubTitleWrapper>
+              <StyledCompensationImageWrap>
+                <Image
+                  width={0}
+                  height={0}
+                  sizes="100vw"
+                  style={{ width: "100%", height: "auto" }}
+                  src="/images/ensuria-logo.webp"
+                  alt="logo"
+                ></Image>
+              </StyledCompensationImageWrap>
+              <StyledCompensationSubTitle>
+                Лише у застосунку Ensuria
+              </StyledCompensationSubTitle>
+            </StyledCompensationSubTitleWrapper>
+            <StyledCompensationTitle>
+              Компенсація на раз-два
+            </StyledCompensationTitle>
+            <StyledCompensationDescription>
+              Якщо подати заявку на страхове відшкодування в Ensuria й замовити
+              доставлення піци одночасно, то гроші прийдуть на твій рахунок
+              раніше, ніж курʼєр.
+            </StyledCompensationDescription>
+            <ButtonList />
+          </StyledCompensationContent>
+        </StyledCompensationBlock>
+      </StyledWrapper>
+      {icons &&
+        icons.map((icon: IconType) => <UserIcon data={icon} key={icon.id} />)}
+    </StyledCompensationSection>
+  );
+};
 
 export default Compensation;
