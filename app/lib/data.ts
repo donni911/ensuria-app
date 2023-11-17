@@ -20,6 +20,8 @@ export type DataObjectType = {
     }
 };
 
+
+
 export const dataShortCards: DataObjectType[] = [
     {
         id: 1,
@@ -55,7 +57,7 @@ export const dataShortCards: DataObjectType[] = [
         id: 4,
         type: 'default',
         title: '70+',
-        description: 'людей у команді',
+        description: 'людей у команді людей у команді людей людей людей у команді людей у команді людей людей у команді людей у команді людей людей у команді людей у команді людей людей у команді людей у команді людей у команді людей у команді у команді у команді',
         bgColor: '#C0F3CA',
         cell: {
 
@@ -148,6 +150,8 @@ export const dataLongCards: DataObjectType[] = [
     },
 
 ]
+
+export const cards = [{ dataShortCards }, { dataLongCards }]
 
 export type TitleDataType = {
     title?: string,

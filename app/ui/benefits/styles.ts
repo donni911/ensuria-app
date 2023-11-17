@@ -13,23 +13,24 @@ export const StyledBaseCard = styled.div<{ $bg?: string; $size?: string }>`
 export const StyledBaseCardCorner = styled.div<{ position: string }>`
   position: absolute;
   ${(props) => {
-        switch (props.position) {
-            case "topLeft":
-                return "top: -1px; left: -1px;";
-            case "topRight":
-                return "top: -1px; right: -1px; rotate: 90deg;";
-            case "bottomLeft":
-                return "bottom: -1px; left: -1px; rotate: -90deg;";
-            case "bottomRight":
-                return "bottom: -1px; right: -1px; rotate: 180deg";
-            default:
-                return "";
-        }
-    }}
+    switch (props.position) {
+      case "topLeft":
+        return "top: -1px; left: -1px;";
+      case "topRight":
+        return "top: -1px; right: -1px; rotate: 90deg;";
+      case "bottomLeft":
+        return "bottom: -1px; left: -1px; rotate: -90deg;";
+      case "bottomRight":
+        return "bottom: -1px; right: -1px; rotate: 180deg";
+      default:
+        return "";
+    }
+  }}
 `;
 
 export const StyledBaseCardWrapper = styled.div<{ $size?: string }>`
   height: 100%;
+  overflow:hidden;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -129,18 +130,18 @@ export const WelcomeDescription = styled(motion.p)`
 // GridBenefits
 
 type StyledGridItemProps = {
-    $bg?: string;
-    $gridcolumn?: string;
-    $gridrow?: string;
-    $display?: boolean;
-    $lg?: string;
-    $bigCell?: boolean;
-    $size?: string;
+  $bg?: string;
+  $gridcolumn?: string;
+  $gridrow?: string;
+  $display?: boolean;
+  $lg?: string;
+  $bigCell?: boolean;
+  $size?: string;
 };
 
 type StyledGridProps = {
-    $cols?: number;
-    $rows?: number;
+  $cols?: number;
+  $rows?: number;
 };
 
 export const StyledGrid = styled.div<StyledGridProps>`
@@ -159,25 +160,25 @@ export const StyledGrid = styled.div<StyledGridProps>`
   `;
 
 export const StyledGridItem = styled(motion.div) <StyledGridItemProps>`
-    min-height: 12.014vw;
+   height: 12.014vw;
     background: ${(props) => props.$bg || ""};
     grid-column: ${(props) => props.$gridcolumn || "span 2 / span 2"};
     grid-row: ${(props) => props.$gridrow || "span 2 / span 2"};
   
     @media ${(props) => props.theme.media.laptop} {
-      height: 175px;
+     height: 175px;
       display: ${(props) => (props.$display ? "none !important" : "block")};
     }
   
     ${(props) =>
-        props.$size === "lg" &&
-        `
+    props.$size === "lg" &&
+    `
       width: 100%;
       min-height: 244px;
   `}
     ${(props) =>
-        props.$bigCell &&
-        `
+    props.$bigCell &&
+    `
     overflow: hidden;
     min-height: 500px;
   
