@@ -1,66 +1,13 @@
 import { styled } from "styled-components";
 import Image from "next/image";
 import { DataObjectType } from "@/app/lib/data";
-
-const StyledBaseCard = styled.div<{ $bg?: string; $size?: string }>`
-  border-radius: min(6px, 0.5vw);
-  background: ${(props) => props.$bg || ""};
-  height: 100%;
-  position: relative;
-`;
-
-const StyledBaseCardCorner = styled.div<{ position: string }>`
-  position: absolute;
-  ${(props) => {
-    switch (props.position) {
-      case "topLeft":
-        return "top: -1px; left: -1px;";
-      case "topRight":
-        return "top: -1px; right: -1px; rotate: 90deg;";
-      case "bottomLeft":
-        return "bottom: -1px; left: -1px; rotate: -90deg;";
-      case "bottomRight":
-        return "bottom: -1px; right: -1px; rotate: 180deg";
-      default:
-        return "";
-    }
-  }}
-`;
-
-const StyledBaseCardWrapper = styled.div<{ $size?: string }>`
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  position: relative;
-  padding: 1.736vw;
-
-  @media ${(props) => props.theme.media.laptop} {
-    padding: 26px;
-  }
-
-  ${(props) => props.$size && `padding: 2.083vw 2.778vw; `}
-`;
-
-const StyledBaseCardTitle = styled.h4`
-  font-size: 3.264vw;
-  font-weight: 500;
-  line-height: 0.9;
-  margin-bottom: 20px;
-
-  @media ${(props) => props.theme.media.laptop} {
-    font-size: 47px;
-  }
-`;
-
-const StyledBaseCardDescription = styled.p`
-  font-size: 1.111vw;
-  line-height: 1.2;
-
-  @media ${(props) => props.theme.media.laptop} {
-    font-size: 16px;
-  }
-`;
+import {
+  StyledBaseCard,
+  StyledBaseCardCorner,
+  StyledBaseCardWrapper,
+  StyledBaseCardTitle,
+  StyledBaseCardDescription,
+} from "../styles";
 
 const BaseCard = (props: { card: DataObjectType; size: string }) => {
   return (

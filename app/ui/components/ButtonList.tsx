@@ -3,6 +3,10 @@ import { StyledLinkBtn } from "@/app/styles/app";
 import { motion, useInView } from "framer-motion";
 import { fadeUpAnimation } from "@/app/styles/animations";
 
+import React from "react";
+import { styled } from "styled-components";
+import Image from "next/image";
+
 const StyledBtnGroup = styled(motion.div)`
   opacity: 0;
   gap: max(0.278vw, 8px);
@@ -10,9 +14,6 @@ const StyledBtnGroup = styled(motion.div)`
   justify-content: center;
   max-width: 330px;
 `;
-import React from "react";
-import { styled } from "styled-components";
-import Image from "next/image";
 
 const ButtonList = () => {
   const bodyAnimation = useRef(null);
