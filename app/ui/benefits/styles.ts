@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { styled } from "styled-components";
-import GridBenefits from "./components/GridBenefits";
 
 // Base Card
 export const StyledBaseCard = styled.div<{ $bg?: string; $size?: string }>`
@@ -128,7 +127,6 @@ export const WelcomeDescription = styled(motion.p)`
 //
 
 // GridBenefits
-
 type StyledGridItemProps = {
   $bg?: string;
   $gridcolumn?: string;

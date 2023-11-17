@@ -9,12 +9,12 @@ import { Provider } from "react-redux";
 
 const Providers = (props: PropsWithChildren) => {
   return (
-    // <Provider store={store}>
+    <Provider store={store}>
       <ThemeProvider theme={theme}>
         <Global></Global>
         <StyledComponentsRegistry>{props.children}</StyledComponentsRegistry>
       </ThemeProvider>
-    // </Provider>
+    </Provider>
   );
 };
 

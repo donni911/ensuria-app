@@ -4,6 +4,14 @@ type ImageType = {
     alt: string;
 }
 
+export type IconType = {
+    id: number | string,
+    type: string,
+    color: string,
+    sum: string,
+    image: ImageType
+}
+
 export type DataObjectType = {
     id: number,
     type: 'image' | 'longImg' | 'centerImg' | 'rightImage' | 'default';
@@ -20,9 +28,12 @@ export type DataObjectType = {
     }
 };
 
+export type TitleDataType = {
+    title?: string,
+    description?: string,
+};
 
-
-export const dataShortCards: DataObjectType[] = [
+const dataShortCards: DataObjectType[] = [
     {
         id: 1,
         type: 'image',
@@ -57,7 +68,7 @@ export const dataShortCards: DataObjectType[] = [
         id: 4,
         type: 'default',
         title: '70+',
-        description: 'людей у команді людей у команді людей людей людей у команді людей у команді людей людей у команді людей у команді людей людей у команді людей у команді людей людей у команді людей у команді людей у команді людей у команді у команді у команді',
+        description: 'людей у команді',
         bgColor: '#C0F3CA',
         cell: {
 
@@ -86,7 +97,7 @@ export const dataShortCards: DataObjectType[] = [
     },
 ]
 
-export const dataLongCards: DataObjectType[] = [
+const dataLongCards: DataObjectType[] = [
     {
         id: 1,
         type: 'rightImage',
@@ -151,24 +162,16 @@ export const dataLongCards: DataObjectType[] = [
 
 ]
 
-export const cards = [{ dataShortCards }, { dataLongCards }]
+export type CardsType = {
+    dataShortCards: DataObjectType[],
+    dataLongCards: DataObjectType[],
 
-export type TitleDataType = {
-    title?: string,
-    description?: string,
-};
+}
+export const cards = { dataShortCards, dataLongCards }
 
-export const titleData: TitleDataType = {
+export const cardsBlockData: TitleDataType = {
     title: 'Привіт, я Ensuria',
     description: 'Цілковито диджитальний асистент зі страхування життя та здоровʼя. Допомагаю жити на повну, перетворюючи страхування у зручний сервіс.'
-}
-
-export type IconType = {
-    id: number | string,
-    type: string,
-    color: string,
-    sum: string,
-    image: ImageType
 }
 
 export const icons: IconType[] = [

@@ -1,5 +1,5 @@
 "use client";
-import { styled } from "styled-components";
+
 import { StyledWrapper } from "@/app/styles/app";
 import Image from "next/image";
 import { IconType, icons } from "@/app/lib/data";
@@ -16,8 +16,11 @@ import {
   StyledCompensationTitle,
   StyledCompensationDescription,
 } from "./styles";
+import { useGetIconsQuery } from "@/app/store/api";
 
 const Compensation = () => {
+  const { data: icons } = useGetIconsQuery();
+
   return (
     <StyledCompensationSection>
       <StyledWrapper>
