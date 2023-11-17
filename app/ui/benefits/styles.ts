@@ -9,7 +9,7 @@ export const StyledBaseCard = styled.div<{ $bg?: string; $size?: string }>`
   position: relative;
 `;
 
-export const StyledBaseCardCorner = styled.div<{ position: string }>`
+export const StyledBaseCardCorner = styled.div<{ position?: string }>`
   position: absolute;
   ${(props) => {
     switch (props.position) {
@@ -157,8 +157,8 @@ export const StyledGrid = styled.div<StyledGridProps>`
     }
   `;
 
-export const StyledGridItem = styled(motion.div) <StyledGridItemProps>`
-   height: 12.014vw;
+export const StyledGridItem = styled(motion.div)<StyledGridItemProps>`
+    height: 12.014vw;
     background: ${(props) => props.$bg || ""};
     grid-column: ${(props) => props.$gridcolumn || "span 2 / span 2"};
     grid-row: ${(props) => props.$gridrow || "span 2 / span 2"};

@@ -2,11 +2,9 @@
 
 import { motion } from "framer-motion";
 import { styled } from "styled-components";
-import Compensation from "./Compensation";
 
 export const StyledIcon = styled(motion.div) <{ $type: string }>`
   position: absolute;
-  opacity: 0;
   ${(props) =>
         props.$type === "bigLeft" &&
         `

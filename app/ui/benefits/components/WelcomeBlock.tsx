@@ -21,6 +21,7 @@ const WelcomeBlock = () => {
       {!isFetching && data && (
         <>
           <WelcomeLogo
+            className="opacity-0"
             variants={fadeInAnimation(0.75)}
             initial="initial"
             animate={isInView ? "enter" : ""}

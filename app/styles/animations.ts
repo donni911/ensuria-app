@@ -22,6 +22,7 @@ export const cardUpAnimation = (delay?: number) => ({
 export const fadeInAnimation = (delay?: number) => ({
     initial: (i: number) => ({
         scale: "0%",
+        opacity: '0'
     }),
     enter: (i: number) => ({
         opacity: '1',
@@ -35,7 +36,7 @@ export const fadeInAnimation = (delay?: number) => ({
 });
 
 export const fadeUpAnimation = (delay?: number) => ({
-    initial: { y: "100%" },
+    initial: { y: "100%", opacity: '0' },
     enter: () => ({
         y: "0%",
         opacity: 1,
@@ -47,6 +48,7 @@ export const fadeUpAnimation = (delay?: number) => ({
 });
 
 export const fadeAnimation = (delay?: number) => ({
+    initial: { opacity: '0' },
     enter: () => ({
         opacity: 1,
         transition: {

@@ -20,6 +20,8 @@ const GridBenefits = (props: {
   const bodyAnimation = useRef(null);
   const isInView = useInView(bodyAnimation, { once: true, margin: "-20%" });
 
+
+
   return (
     <StyledGrid ref={bodyAnimation} $cols={props.cols} $rows={props.rows}>
       {props.items.length &&
@@ -31,6 +33,7 @@ const GridBenefits = (props: {
             $gridrow={gridCellSize(item.cell.row)}
             $size={props.size}
             $bigCell={item.type === "centerImg"}
+            
             custom={item.id}
             variants={cardUpAnimation()}
             initial="initial"
