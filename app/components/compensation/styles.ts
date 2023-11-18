@@ -5,9 +5,11 @@ import { styled } from "styled-components";
 
 export const StyledIcon = styled(motion.div) <{ $type: string }>`
   position: absolute;
+  opacity: 0;
+
   ${(props) =>
-        props.$type === "bigLeft" &&
-        `
+    props.$type === "bigLeft" &&
+    `
     width: 15.486vw;
     top: 8.903vw;
     left: 5.625vw;
@@ -29,8 +31,8 @@ export const StyledIcon = styled(motion.div) <{ $type: string }>`
         }
     }`}
   ${(props) =>
-        props.$type === "bigRight" &&
-        `
+    props.$type === "bigRight" &&
+    `
       width: 11.111vw;
       top: 15.889vw;
       right: 9.792vw;
@@ -49,8 +51,8 @@ export const StyledIcon = styled(motion.div) <{ $type: string }>`
           }
       }`}
   ${(props) =>
-        props.$type === "smallLeft" &&
-        `
+    props.$type === "smallLeft" &&
+    `
       width: 6.736vw;
       top: 41.375vw;
       left: 26.875vw;
@@ -63,8 +65,8 @@ export const StyledIcon = styled(motion.div) <{ $type: string }>`
           font-size: 0.796vw;
       }`}
   ${(props) =>
-        props.$type === "smallRight" &&
-        `
+    props.$type === "smallRight" &&
+    `
       width: 10vw;
       height: 10vw;
       bottom: 14vw;

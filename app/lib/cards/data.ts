@@ -1,39 +1,6 @@
+import { CardType } from "./types"
 
-type ImageType = {
-    src: string;
-    alt: string;
-}
-
-export type IconType = {
-    id: number | string,
-    type: string,
-    color: string,
-    sum: string,
-    image: ImageType
-}
-
-export type DataObjectType = {
-    id: number,
-    type: 'image' | 'longImg' | 'centerImg' | 'rightImage' | 'default';
-    title?: string,
-    croppedPosition?: "topLeft" | "topRight" | "bottomLeft" | "bottomRight";
-    description?: string,
-    visibleLg?: boolean,
-    bgColor?: string,
-    image?: ImageType,
-    display?: string,
-    cell: {
-        row?: number,
-        col: number,
-    }
-};
-
-export type TitleDataType = {
-    title?: string,
-    description?: string,
-};
-
-const dataShortCards: DataObjectType[] = [
+const dataShortCards: CardType[] = [
     {
         id: 1,
         type: 'image',
@@ -60,7 +27,6 @@ const dataShortCards: DataObjectType[] = [
         image: { src: "open-space.webp", alt: "smiling man" },
         visibleLg: true,
         cell: {
-
             col: 4
         }
     },
@@ -71,7 +37,6 @@ const dataShortCards: DataObjectType[] = [
         description: 'людей у команді',
         bgColor: '#C0F3CA',
         cell: {
-
             col: 2
         }
     },
@@ -97,7 +62,7 @@ const dataShortCards: DataObjectType[] = [
     },
 ]
 
-const dataLongCards: DataObjectType[] = [
+const dataLongCards: CardType[] = [
     {
         id: 1,
         type: 'rightImage',
@@ -162,57 +127,4 @@ const dataLongCards: DataObjectType[] = [
 
 ]
 
-export type CardsType = {
-    dataShortCards: DataObjectType[],
-    dataLongCards: DataObjectType[],
-
-}
 export const cards = { dataShortCards, dataLongCards }
-
-export const cardsBlockData: TitleDataType = {
-    title: 'Привіт, я Ensuria',
-    description: 'Цілковито диджитальний асистент зі страхування життя та здоровʼя. Допомагаю жити на повну, перетворюючи страхування у зручний сервіс.'
-}
-
-export const icons: IconType[] = [
-    {
-        id: 1,
-        type: "bigLeft",
-        color: '#D6E3FF',
-        sum: '+ ₴18 500',
-        image: {
-            src: "compensation-person-1.webp",
-            alt: 'person-1'
-        }
-    },
-    {
-        id: 2,
-        type: "bigRight",
-        color: '#C0F3CA',
-        sum: '+ ₴15 000',
-        image: {
-            src: "compensation-person-2.webp",
-            alt: 'person-2'
-        }
-    },
-    {
-        id: 3,
-        type: "smallLeft",
-        color: '#FFFFAF',
-        sum: '+ ₴15 000',
-        image: {
-            src: "compensation-person-3.webp",
-            alt: 'person-3'
-        }
-    },
-    {
-        id: 4,
-        type: "smallRight",
-        color: '#FFFFAF',
-        sum: '+ ₴6 500',
-        image: {
-            src: "compensation-person-4.webp",
-            alt: 'person-4'
-        }
-    }
-]

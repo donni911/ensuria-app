@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-import { tthoves } from "./ui/fonts";
 import Providers from "./providers";
+import { tthoves } from "./styles/fonts";
 
 export const metadata: Metadata = {
   title: "Ensuria",

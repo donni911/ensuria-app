@@ -8,6 +8,7 @@ import { styled } from "styled-components";
 import Image from "next/image";
 
 const StyledBtnGroup = styled(motion.div)`
+  opacity: 0;
   gap: max(0.278vw, 8px);
   display: flex;
   justify-content: center;
@@ -24,7 +25,6 @@ const ButtonList = () => {
       variants={fadeUpAnimation(1.4)}
       initial="initial"
       animate={isInView ? "enter" : ""}
-      className="opacity-0"
     >
       <StyledLinkBtn href="/">
         <Image

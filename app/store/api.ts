@@ -1,12 +1,14 @@
 
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { CardsType, IconType, TitleDataType } from "../lib/data";
+import { CardsType } from "../lib/cards/types";
+import { IconType } from "../lib/icons/types";
+import { TitleDataType } from "../lib/title/types";
 
 export const api = createApi({
     reducerPath: "api",
 
     baseQuery: fetchBaseQuery({
-        baseUrl: "http://localhost:3000/api/",
+        baseUrl: "/api/",
     }),
 
     endpoints: (builder) => ({
@@ -24,4 +26,4 @@ export const api = createApi({
     }),
 });
 
-export const { useGetCardsQuery, useGetBlockInfoQuery, useGetIconsQuery } = api;
+export const { useGetCardsQuery, useGetBlockInfoQuery, useGetIconsQuery, useLazyGetIconsQuery } = api;

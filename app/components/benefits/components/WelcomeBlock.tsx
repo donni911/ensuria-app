@@ -21,7 +21,6 @@ const WelcomeBlock = () => {
       {!isFetching && data && (
         <>
           <WelcomeLogo
-            className="opacity-0"
             variants={fadeInAnimation(0.75)}
             initial="initial"
             animate={isInView ? "enter" : ""}
@@ -36,7 +35,6 @@ const WelcomeBlock = () => {
             ></Image>
           </WelcomeLogo>
           <motion.div
-            className="opacity-0"
             variants={fadeAnimation(1.4)}
             initial="initial"
             animate={isInView ? "enter" : ""}

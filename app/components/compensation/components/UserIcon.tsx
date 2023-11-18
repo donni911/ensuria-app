@@ -22,7 +22,6 @@ const UserIcon = (props: { data: IconType }) => {
       variants={fadeAnimation()}
       initial="initial"
       animate={isInView ? "enter" : ""}
-      className="opacity-0"
     >
       <StyledIconSvgWrapper $type={props.data.type} $fill={props.data.color}>
         <StyledIconSvgWrapperText>{props.data.sum}</StyledIconSvgWrapperText>

@@ -29,7 +29,6 @@ export const StyledBaseCardCorner = styled.div<{ position?: string }>`
 
 export const StyledBaseCardWrapper = styled.div<{ $size?: string }>`
   height: 100%;
-  overflow:hidden;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -40,7 +39,7 @@ export const StyledBaseCardWrapper = styled.div<{ $size?: string }>`
     padding: 26px;
   }
 
-  ${(props) => props.$size && `padding: 2.083vw 2.778vw; `}
+  ${(props) => props.$size === 'lg' && `padding: 2.083vw 2.778vw;`}
 `;
 
 export const StyledBaseCardTitle = styled.h4`
@@ -57,9 +56,61 @@ export const StyledBaseCardTitle = styled.h4`
 export const StyledBaseCardDescription = styled.p`
   font-size: 1.111vw;
   line-height: 1.2;
+  overflow: hidden;
+
 
   @media ${(props) => props.theme.media.laptop} {
     font-size: 16px;
+  }
+`;
+
+export const StyledCardCenterImage = styled.div`
+  height: 16.25vw;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  width: 100%;
+  transform: translateY(-50%);
+  @media ${(props) => props.theme.media.laptop} {
+    height: 204px;
+  }
+
+  img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    @media ${(props) => props.theme.media.laptop} {
+      object-fit: fill;
+    }
+  }
+`;
+
+export const StyledCardRightImage = styled.div`
+  width: 14.111vw;
+  height: 14.569vw;
+  position: absolute;
+  bottom: 0;
+  right: -6px;
+  z-index: 2;
+
+  @media ${(props) => props.theme.media.laptop} {
+    width: 195px;
+    height: 210px;
+  }
+
+  img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
   }
 `;
 //
@@ -84,6 +135,7 @@ export const Wrapper = styled.div`
 
 export const WelcomeLogo = styled(motion.div)`
   width: 7.986vw;
+  opacity:0;
   height: 7.986vw;
   position: relative;
   margin-bottom: 2.222vw;
@@ -115,7 +167,6 @@ export const WelcomeDescription = styled(motion.p)`
   line-height: 1.3;
   margin-bottom: 3.75vw;
   text-align: center;
-
   color: ${(props) => props.theme.colors.gray};
 
   @media ${(props) => props.theme.media.laptop} {
@@ -157,14 +208,19 @@ export const StyledGrid = styled.div<StyledGridProps>`
     }
   `;
 
-export const StyledGridItem = styled(motion.div)<StyledGridItemProps>`
-    height: 12.014vw;
+export const StyledGridItem = styled(motion.div) <StyledGridItemProps>`
+    min-height: 12.014vw;
+    height: auto;
     background: ${(props) => props.$bg || ""};
     grid-column: ${(props) => props.$gridcolumn || "span 2 / span 2"};
     grid-row: ${(props) => props.$gridrow || "span 2 / span 2"};
   
+    @media ${(props) => props.theme.media.laptopUp} {
+      max-height: max-content;
+    }
+
     @media ${(props) => props.theme.media.laptop} {
-     height: 175px;
+      height: 175px;
       display: ${(props) => (props.$display ? "none !important" : "block")};
     }
   

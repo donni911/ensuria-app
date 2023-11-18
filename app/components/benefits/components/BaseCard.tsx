@@ -1,15 +1,25 @@
-import { styled } from "styled-components";
 import Image from "next/image";
-import { DataObjectType } from "@/app/lib/data";
+
 import {
   StyledBaseCard,
   StyledBaseCardCorner,
   StyledBaseCardWrapper,
   StyledBaseCardTitle,
   StyledBaseCardDescription,
+  StyledCardRightImage,
+  StyledCardCenterImage,
 } from "../styles";
 
-const BaseCard = (props: { card: DataObjectType; size: string }) => {
+import { CardType } from "@/app/lib/cards/types";
+
+const BaseCard = (props: { card: CardType; size: string }) => {
+  const cardsConfig: Record<CardType["type"], React.ReactNode> = {
+    image: <CardImage card={props.card} />,
+    rightImage: <CardRightImage card={props.card} size={props.size} />,
+    default: <CardSimple card={props.card} size={props.size} />,
+    centerImg: <CardCenterImage card={props.card} size={props.size} />,
+  };
+
   return (
     <StyledBaseCard $bg={props.card.bgColor}>
       {props.card.croppedPosition && (
@@ -23,21 +33,16 @@ const BaseCard = (props: { card: DataObjectType; size: string }) => {
           />
         </StyledBaseCardCorner>
       )}
-      {props.card.type === "image" && <CardImage card={props.card} />}
-      {props.card.type === "rightImage" && (
-        <CardRightImage card={props.card} size={props.size} />
-      )}
-      {props.card.type === "default" && (
-        <CardSimple card={props.card} size={props.size} />
-      )}
-      {props.card.type === "centerImg" && (
-        <CardCenterImage card={props.card} size={props.size} />
-      )}
+
+      {props.card.type === "image" && cardsConfig.image}
+      {props.card.type === "rightImage" && cardsConfig.rightImage}
+      {props.card.type === "default" && cardsConfig.default}
+      {props.card.type === "centerImg" && cardsConfig.centerImg}
     </StyledBaseCard>
   );
 };
 
-const CardImage = (props: { card: DataObjectType }) => {
+const CardImage = (props: { card: CardType }) => {
   return (
     <Image
       width={0}
@@ -50,7 +55,7 @@ const CardImage = (props: { card: DataObjectType }) => {
   );
 };
 
-const CardSimple = (props: { card: DataObjectType; size: string }) => {
+const CardSimple = (props: { card: CardType; size: string }) => {
   return (
     <StyledBaseCardWrapper $size={props.size}>
       {props.card.title && (
@@ -65,31 +70,7 @@ const CardSimple = (props: { card: DataObjectType; size: string }) => {
   );
 };
 
-const StyledCardRightImage = styled.div`
-  width: 14.111vw;
-  height: 14.569vw;
-  position: absolute;
-  bottom: 0;
-  right: -6px;
-  z-index: 2;
-
-  @media ${(props) => props.theme.media.laptop} {
-    width: 195px;
-    height: 210px;
-  }
-
-  img {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateY(-50%) translateX(-50%);
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-`;
-
-const CardRightImage = (props: { card: DataObjectType; size: string }) => {
+const CardRightImage = (props: { card: CardType; size: string }) => {
   return (
     <StyledBaseCardWrapper $size={props.size}>
       <div className="h-full w-6/12 flex flex-col justify-between">
@@ -119,33 +100,7 @@ const CardRightImage = (props: { card: DataObjectType; size: string }) => {
   );
 };
 
-const StyledCardCenterImage = styled.div`
-  height: 16.25vw;
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  width: 100%;
-  transform: translateY(-50%);
-  @media ${(props) => props.theme.media.laptop} {
-    height: 204px;
-  }
-
-  img {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateY(-50%) translateX(-50%);
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    @media ${(props) => props.theme.media.laptop} {
-      object-fit: fill;
-    }
-  }
-`;
-
-const CardCenterImage = (props: { card: DataObjectType; size: string }) => {
+const CardCenterImage = (props: { card: CardType; size: string }) => {
   return (
     <StyledBaseCardWrapper $size={props.size}>
       <div className="h-full flex flex-col justify-between">
