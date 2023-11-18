@@ -1,4 +1,3 @@
-import { IconType } from "@/app/lib/data";
 
 import Image from "next/image";
 import { useInView } from "framer-motion";
@@ -10,6 +9,7 @@ import {
   StyledIconSvgWrapperText,
   StyledIconImg,
 } from "../styles";
+import { IconType } from "@/app/lib/icons/types";
 
 const UserIcon = (props: { data: IconType }) => {
   const el = useRef(null);
